@@ -1,0 +1,63 @@
+﻿@model IEnumerable<blog.Models.Post>
+
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<br /><br />
+<h2>Posts</h2>
+
+<p>
+    <a asp-action="Create">Create New Post</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Title)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CreatedOn)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CreatedBy)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Short_description)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Long_description)
+            </th>
+            
+
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Title)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CreatedOn)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CreatedBy)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Short_description)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Long_description)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.PostId">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.PostId">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.PostId">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
